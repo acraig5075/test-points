@@ -1,0 +1,8 @@
+test-points
+Alasdair Craig
+
+Use to generate test points for feeding into best-fit
+
+Build using the Makefile.
+Documentation at acraig.za.net/src/best-fit.html
+
