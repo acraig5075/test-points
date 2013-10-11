@@ -27,9 +27,9 @@ void TestPoints::SetError(double error)
 	m_error = error;
 }
 
-void TestPoints::Generate(int count, int precision)
+void TestPoints::Generate(int count, int precision, std::ostream &os)
 {
-	std::cout << count << std::endl;
+	os << count << std::endl;
 	srand((unsigned int)time(NULL));
 
 	for (int i = 0; i < count; i++)
@@ -40,7 +40,7 @@ void TestPoints::Generate(int count, int precision)
 		RotateXY(x, y);
 		TranslateXY(x, y);
 
-		std::cout << std::setprecision(precision) << std::setiosflags(std::ios::fixed) << x << "," << y << std::endl;
+		os << std::setprecision(precision) << std::setiosflags(std::ios::fixed) << x << "," << y << std::endl;
 	}
 }
 

@@ -1,3 +1,5 @@
+#ifndef TEST_POINTS_LIB
+
 #include <boost/program_options.hpp>
 #include <iostream>
 #include "TestPoints.h"
@@ -66,10 +68,12 @@ int main(int argc, char *argv[])
 		if (setError)
 			t->SetError(error);
 
-		t->Generate(count, precision);
+		t->Generate(count, precision, std::cout);
 		delete t;
 		return 0;
 		}
 
 	return 1;
 }
+
+#endif

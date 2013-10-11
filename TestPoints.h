@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 class TestPoints
 {
 	public:
@@ -8,7 +10,7 @@ class TestPoints
 
 		void SetRange(double range1, double range2);
 		void SetError(double tolerance);
-		void Generate(int count, int precision);
+		void Generate(int count, int precision, std::ostream &os);
 	protected:
 		double RandomError() const;
 
