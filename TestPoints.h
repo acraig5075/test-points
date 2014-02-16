@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 class TestPoints
 {
@@ -8,11 +9,17 @@ class TestPoints
 		TestPoints();
 		virtual ~TestPoints();
 
+		virtual bool operator == (const TestPoints &rhs) const { return false; };
+
 		void SetRange(double range1, double range2);
 		void SetError(double tolerance);
 		void Generate(int count, int precision, std::ostream &os);
+		void Generate(int count, int precision, std::vector<double> &points);
 	protected:
 		double RandomError() const;
+
+		bool CompareCoordinateValue(double a, double b) const;
+		bool CompareAngleValue(double a, double b) const;
 
 		double m_range1;
 		double m_range2;
@@ -35,6 +42,8 @@ class TestPointsLine : public TestPoints
 	private:
 		double Equation(double x) const;
 
+		bool operator == (const TestPoints &rhs) const;
+
 		double m_slope;
 		double m_intercept;
 	};
@@ -49,6 +58,8 @@ class TestPointsCircle : public TestPoints
 		double Equation(double x) const;
 		void TranslateXY(double &x, double &y) const;
 		void ValidateRange(double &range1, double &range2) const;
+
+		bool operator == (const TestPoints &rhs) const;
 
 		double m_centrex;
 		double m_centrey;
@@ -68,6 +79,8 @@ class TestPointsEllipse : public TestPoints
 		void TranslateXY(double &x, double &y) const;
 		void ValidateRange(double &range1, double &range2) const;
 
+		bool operator == (const TestPoints &rhs) const;
+
 		double m_centrex;
 		double m_centrey;
 		double m_a;
@@ -85,5 +98,5 @@ class TestPointsFactory
 	{
 	public:
 		TestPointsFactory();
-		static TestPoints *Create(int type);
+		static TestPoints *Create(int type, std::istream &is);
 	};

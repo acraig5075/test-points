@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 
 	// TODO: validate range1 and range2 input
 
-	TestPoints *t = TestPointsFactory::Create(type);
+	TestPoints *t = TestPointsFactory::Create(type, std::cin);
 	if (t)
 		{
 		if (setRange)
