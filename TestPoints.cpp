@@ -5,6 +5,7 @@
 #include <cassert>
 #include <cmath>
 #include <iomanip>
+#include <algorithm>
 
 TestPoints::TestPoints()
 : m_range1(-50.0), m_range2(50.0), m_error(1.0)
